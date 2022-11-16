@@ -12,12 +12,19 @@ export default function Feed() {
       .then(data => setPhotoList(data.message))
       .catch(console.error)
   }, [setPhotoList])
+  
   return (
     <>
       <section>
         {
           photoList
-            ? <p>You have this many posts {photoList.length}</p>
+            ? <>
+              {/* <p>You have this many posts {photoList.length}</p> */}
+              <p>{photoList[0].username}</p>
+              <img src={photoList[0].profilePic} alt={photoList[0].username} width="250" />
+              <img src={photoList[0].photo} alt={photoList[0].description} />
+              <p>{photoList[0].description}</p>
+            </>
             : <p>Comming Soon... ⏱⏱⏱</p>
         }
         {showUpload && <UploadModal setShowUpload={setShowUpload} setPhotoList={setPhotoList}/>}
