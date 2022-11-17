@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Button } from 'antd'
 import UploadModal from './UploadModal'
+import Card from './Card'
 
 export default function Feed() {
   const [photoList, setPhotoList] = useState()
@@ -18,13 +19,7 @@ export default function Feed() {
       <section>
         {
           photoList
-            ? <>
-              {/* <p>You have this many posts {photoList.length}</p> */}
-              <p>{photoList[0].username}</p>
-              <img src={photoList[0].profilePic} alt={photoList[0].username} width="250" />
-              <img src={photoList[0].photo} alt={photoList[0].description} />
-              <p>{photoList[0].description}</p>
-            </>
+            ? photoList.map(photo =>  <Card key={photo.id} photo={photo}/>)
             : <p>Comming Soon... ⏱⏱⏱</p>
         }
         {showUpload && <UploadModal setShowUpload={setShowUpload} setPhotoList={setPhotoList}/>}
