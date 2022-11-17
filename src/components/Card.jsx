@@ -7,6 +7,8 @@ export default function Post({ photo }) {
     style={{
       width: 300,
     }}
+
+    hoverable
     cover={
       <img
         alt={photo.description}

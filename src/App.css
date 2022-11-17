@@ -4,7 +4,7 @@ header {
 }
 
 body{
-  padding-top: 4rem;
+  padding: 4rem 0 4rem 0;
 }
 
 .App {
@@ -30,7 +30,6 @@ section {
 .ant-card-bordered{
   background-color: #383c44;
   border: none;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 2rem;
   border-radius: 1rem;
 }
