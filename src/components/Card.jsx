@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
 import { Card, Avatar, Button } from 'antd'
+import { useContext } from 'react'
+import { UserContext } from '../App'
 
 export default function Post({ photo }) {
+  const {user} = useContext(UserContext)
+  const uid = JSON.parse(user).uid
   const [isLiked, setIsLiked] = useState(false)
   const [likes, setLikes] = useState(0)
-  const userId = 1
   const like = () => {
-    fetch(`https://express-ts-ee.web.app/likes/${photo.id}/${userId}`, {
+    fetch(`http://127.0.0.1:5002/likes/${photo.id}/${uid}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -21,14 +24,14 @@ export default function Post({ photo }) {
   }
 
   useEffect(() => {
-    fetch(`https://express-ts-ee.web.app/likes/${photo.id}/${userId}`)
-      .then(res => res.json())
-      .then((res) => {
-        setIsLiked(res.isLiked)
-        setLikes(res.likes)
+    fetch(`http://127.0.0.1:5002/likes/${photo.id}/${uid}`)
+    .then(response => response.json())
+      .then((response) => {
+        setIsLiked(response.isLiked) 
+        setLikes(response.likes) 
       })
       .catch(console.error)
-  }, [setIsLiked, userId, photo.id])
+  }, [setIsLiked, uid, photo.id])
 
   return (
     <>
