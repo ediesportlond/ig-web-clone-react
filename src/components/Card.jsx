@@ -9,7 +9,7 @@ export default function Post({ photo }) {
   const [isLiked, setIsLiked] = useState(false)
   const [likes, setLikes] = useState(0)
   const like = () => {
-    fetch(`http://127.0.0.1:5002/likes/${photo.id}/${uid}`, {
+    fetch(`https://express-ts-ee.web.app/likes/${photo.id}/${uid}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ export default function Post({ photo }) {
   }
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:5002/likes/${photo.id}/${uid}`)
+    fetch(`https://express-ts-ee.web.app/likes/${photo.id}/${uid}`)
     .then(response => response.json())
       .then((response) => {
         setIsLiked(response.isLiked) 
